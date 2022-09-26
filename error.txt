@@ -1,0 +1,26 @@
+#Error|HTTP|message
+300;200;Sucesso
+301;201;Sucesso
+302;403;host nao permitido acesso (blackList)
+303;403;DNIS nao permitido acesso (blackList)
+304;503;Servidor em manutencao
+305;400;Erro de formatacao
+306;403;Token invalido
+307;403;Cliente Invalido	
+308;403;Departamento Invalido
+309;403;ANI NAO e numerico
+310;401;ANI esta na Lista Restritiva Geral
+
+# Passo ate a Black list FIXA    
+410;401;ANI esta na  Lista Liberada Geral
+
+# Inicia a lista dinamica
+511;401;DNIS NAO e numerico
+512;403;DNIS nao encontrado
+513;401;ANI Lista Restritiva
+514;200;Tipo ANI nao monitorado 200
+515;200;ANI Lista Liberada
+516;401;ANI barrado na analise de padroes
+517;401;Atingiu o limite Ligacao
+518;401;Atingiu o limite desta info
+519;401;Atingiu o limite multiplo (ligacao / Info)
