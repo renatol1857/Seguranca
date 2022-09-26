@@ -6,4 +6,5 @@ import com.renatol.seguranca.model.local.CodErro;
 
 public interface CodErroRepository extends JpaRepository<CodErro, Long>{
 
+	// public CodErro findByCodErro(String codError);
 }

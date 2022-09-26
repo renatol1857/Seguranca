@@ -2,8 +2,8 @@ package com.renatol.seguranca;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,14 +34,19 @@ public class SegurancaApplication implements CommandLineRunner{
 		String userDirectory = new File("").getAbsolutePath();
 		String path = userDirectory.concat("\\error.txt");
 		
-		BufferedReader buffRead = new BufferedReader(new FileReader(path));
+		BufferedReader buffRead;
+		try {
+			buffRead = new BufferedReader(new FileReader(path));
+		} catch (FileNotFoundException e) {
+			logger.info("Erro em importar arquivo de erros local.");
+			return;
+		}
 		String linha = buffRead.readLine();
-
 		while (true) {
 			if ( linha == null )
 				break;	
 			if (linha.length() > 0 && !linha.startsWith("#")) {
-				String[] msg = linha.split(";");
+				String[] msg = linha.split("\\|");
 				if (msg.length == 3) {
 					iCont++;
 					CodErro codErro = new CodErro(msg[0], msg[1], msg[2]);
@@ -51,7 +56,7 @@ public class SegurancaApplication implements CommandLineRunner{
 			linha = buffRead.readLine();
 		}
 		buffRead.close();
-		logger.info("Finalizou carga tabela de erros. Registros [" + iCont + "]");
+		logger.info("Finalizou carga da tabela de erros. Registros [" + iCont + "]");
 	}
 
 }
