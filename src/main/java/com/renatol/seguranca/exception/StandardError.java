@@ -14,7 +14,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StandartError implements Serializable {
+public class StandardError implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class StandartError implements Serializable {
 	private String msg;
 	private String dh;
 	
-	public StandartError(Integer httpCode, String msg) {
+	public StandardError(Integer httpCode, String msg) {
 		this.httpCode = httpCode;
 		if (msg.length() <= 0)
 			msg = "Error nao esperado";
@@ -34,21 +34,20 @@ public class StandartError implements Serializable {
 		this.dh =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 	}
 
-	public StandartError(String codMsg, Integer httpCode, String msg) {
+	public StandardError(String codMsg, Integer httpCode, String msg) {
 		super();
 		this.codMsg = "600";
 		this.msgGeral = "Erro genêrico";
-		/*
+
 		//this.httpCode = httpCode;
 		if (codMsg.length() > 0) {
-			CodErro codErro = codErroRepository.findByCodErro(codMsg);
+			CodErro codErro = codErroRepository.findByCod(codMsg);
 			if (codErro != null) {
 				this.msgGeral = codErro.getMsg();
 				this.codMsg = codMsg;
-				//this.httpCode = Integer.valueOf(codErro.getStatusHttp());
+				this.httpCode = Integer.valueOf(codErro.getStatusHttp());
 			}
 		}
-		*/
 		this.msg = msg;
 		this.dh =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 	}

@@ -25,3 +25,9 @@
 517|404|Atingiu o limite Ligacao
 518|404|Atingiu o limite desta info
 519|404|Atingiu o limite multiplo (ligacao / Info)
+
+# Erro de sistema
+600|400|Erro generico
+
+
+
